@@ -1,0 +1,19 @@
+﻿[02:47:51] ===== BobGuard MVP - End-to-End Run =====
+[02:47:51] INFO: Fix already applied. Creating temporary buggy copy for pre-fix phases.
+[02:47:51] >> Phase 1: Unit tests (bug present)
+[02:47:52]    Phase 1 result: exit=0 (expected 0)
+[02:47:52] >> Phase 2: Regression test (bug present - expected FAIL)
+[02:47:53]    Phase 2 result: exit=1 (expected 1 - confirmed bug)
+[02:47:53] >> Phase 3: Apply fix
+[02:47:53]    Fix already present - no change needed.
+[02:47:53]    Phase 3 result: exit=0 (expected 0)
+[02:47:53] >> Phase 4a: Regression test (after fix - must PASS)
+[02:47:54]    Phase 4a result: exit=0 (expected 0)
+[02:47:54] >> Phase 4b: Full test suite (after fix - must PASS)
+[02:47:55]    Phase 4b result: exit=0 (expected 0)
+[02:47:55] >> Phase 5: Policy filter unit tests
+[02:48:05]    Phase 5 result: exit=0 (expected 0)
+[02:48:05] >> Phase 6: Policy filter on raw-report.md
+[02:48:07]    Phase 6 result: exit=2 (0=clean, 2=redacted)
+[02:48:07] >> Phase 7: Release readiness check
+[02:48:08]    Phase 7 result: exit=0 (0=APPROVED, 1=BLOCKED)

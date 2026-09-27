@@ -1,0 +1,10 @@
+﻿{
+    "InputPath":  ".\\bobguard\\reports\\final-report-sanitized-v2.md",
+    "OutputPath":  ".\\bobguard\\reports\\final-report-clean-v2.md",
+    "RedactedCount":  0,
+    "TruncatedBlocks":  0,
+    "RedactedItems":  [
+
+                      ],
+    "Timestamp":  "2026-09-27T02:58:52.5099802-05:00"
+}

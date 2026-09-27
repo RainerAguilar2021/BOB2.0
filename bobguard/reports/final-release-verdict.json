@@ -1,0 +1,32 @@
+﻿{
+    "Verdict":  "BLOCKED",
+    "Blocked":  true,
+    "Checks":  [
+                   {
+                       "Check":  "R1-unit-tests",
+                       "Status":  "PASS",
+                       "Detail":  "All unit tests passed"
+                   },
+                   {
+                       "Check":  "R2-regression-tests",
+                       "Status":  "PASS",
+                       "Detail":  "All regression tests passed"
+                   },
+                   {
+                       "Check":  "R3-sanitized-report",
+                       "Status":  "BLOCKED",
+                       "Detail":  "Report still has 1 redaction(s) and 0 truncated block(s)"
+                   },
+                   {
+                       "Check":  "R4-rollback-plan",
+                       "Status":  "PASS",
+                       "Detail":  "Rollback plan present and contains numbered steps"
+                   },
+                   {
+                       "Check":  "R5-dependency-audit",
+                       "Status":  "NOT VERIFIED",
+                       "Detail":  "No package manager or audit command available in this environment"
+                   }
+               ],
+    "Timestamp":  "2026-09-27T02:58:18.4546785-05:00"
+}

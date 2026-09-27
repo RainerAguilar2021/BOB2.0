@@ -1,0 +1,26 @@
+=== PRE-FIX REGRESSION TEST OUTPUT (INC-001) ===
+Captured by: IBM Bob 2.0 BobGuard investigation (Prompt 2)
+Source restored immediately after capture; fix remains in place.
+
+=== Regression Tests ===
+  INC-001: Get-TotalPages must use ceiling division
+  [FAIL] INC-001 regression: TotalPages(25,10)=2 (expected 3)
+         -> BUG PRESENT: truncation discards last partial page
+  [FAIL] INC-001 regression: TotalPages(1,10)=1  expected=1  actual=0
+  [FAIL] INC-001 regression: TotalPages(11,10)=2  expected=2  actual=1
+  [PASS] INC-001 regression: TotalPages(30,10)=3
+
+=== Results ===
+  Passed : 1
+  Failed : 3
+  Results written to: bobguard/test-results.json
+
+EXIT: 1
+
+---
+Failure matches incident description:
+  - TotalPages(25,10) returned 2, expected 3 (incident: "Expected 3, Actual 2")
+  - TotalPages(1,10)  returned 0, expected 1 (truncation: floor(0.1) = 0)
+  - TotalPages(11,10) returned 1, expected 2 (truncation: floor(1.1) = 1)
+All three failures are caused by [int]($Count / $PageSize) truncating toward zero.
+Consistent with root cause in incident.md and ADR-001.

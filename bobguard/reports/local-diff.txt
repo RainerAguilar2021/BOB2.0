@@ -1,0 +1,100 @@
+diff --bobguard-investigation INC-001
+# Local diff — git not available in this environment
+# Format: manual unified diff showing all changes made during Prompt 2 investigation
+# Source: IBM Bob 2.0 BobGuard investigation
+# Date: 2026-09-27
+
+=== CHANGED: app/Invoke-Calculator.ps1 ===
+
+--- a/app/Invoke-Calculator.ps1  (externally modified, pre-investigation)
++++ b/app/Invoke-Calculator.ps1  (post-investigation cleanup)
+
+@@ -1,15 +1,14 @@
+-<BOM><#
++<#
+ .SYNOPSIS
+     Minimal sample calculator module for BobGuard MVP.
+
+ .DESCRIPTION
+     Functions: ...
+
+-    INC-001 BUG: Get-TotalPages uses integer division without ceiling, so the
+-    last partial page is silently dropped when Count % PageSize != 0.
+-    The FIXED version uses [Math]::Ceiling.
++    INC-001 FIX APPLIED: Get-TotalPages now uses [Math]::Ceiling for correct
++    ceiling division, ensuring trailing partial pages are never dropped.
+ #>
+
+@@ -44 +44 @@
+-    [decimal] $DiscountPct   # 0<mojibake>100
++    [decimal] $DiscountPct   # 0-100
+
+@@ -52 +52 @@
+-}
+-   (3 trailing blank lines removed)
++}
+ (EOF)
+
+NOTE: The fix itself ([Math]::Ceiling on line 39) was already present before
+this investigation. The external editor introduced the BOM, stale comment,
+mojibake, and trailing blank lines — all cleaned up here.
+
+
+=== CHANGED: incidents/INC-001/incident.md ===
+
+--- a/incidents/INC-001/incident.md
++++ b/incidents/INC-001/incident.md
+
+@@ -6 +6 @@
+-| **Status** | OPEN (pre-fix) |
++| **Status** | RESOLVED -- fix verified, 21/21 tests pass |
+
+
+=== NEW: incidents/INC-001/findings/dev-investigation.md ===
+  Developer investigation findings (root cause, source location, fix, external change note)
+
+=== NEW: incidents/INC-001/findings/ops-investigation.md ===
+  Operations investigation findings (log correlation, rollback, runbook match)
+
+=== NEW: incidents/INC-001/findings/security-investigation.md ===
+  Security/release investigation findings (patterns scanned, audit status, scope)
+
+=== NEW: incidents/INC-001/findings/regression-pre-fix.txt ===
+  Pre-fix regression test output (exit 1, 3 failures confirming bug)
+
+=== NEW: bobguard/reports/final-report-raw.md ===
+  Final incident report with release verdict (raw, contains synthetic credential for demo)
+
+=== NEW: bobguard/reports/final-report-sanitized.md ===
+  First sanitized pass (exit 2, credential redacted)
+
+=== NEW: bobguard/reports/final-report-sanitized-v2.md ===
+  Second sanitized pass after verdict was added to raw report (exit 2, credential redacted)
+
+=== NEW: bobguard/reports/final-report-clean.md ===
+  First clean pass (exit 0, RedactedCount=0)
+
+=== NEW: bobguard/reports/final-report-clean-v2.md ===
+  Final clean report for release evaluation (exit 0, RedactedCount=0, no patterns remain)
+
+=== NEW: bobguard/reports/final-report-policy-summary.json ===
+  Policy summary for first sanitization pass
+
+=== NEW: bobguard/reports/final-report-policy-summary-v2.json ===
+  Policy summary for second sanitization pass
+
+=== NEW: bobguard/reports/final-report-clean-summary.json ===
+  Policy summary confirming first clean pass (RedactedCount=0)
+
+=== NEW: bobguard/reports/final-report-clean-summary-v2.json ===
+  Policy summary confirming final clean pass (RedactedCount=0) — used for release check
+
+=== NEW: bobguard/reports/final-release-verdict.json ===
+  Initial release verdict (BLOCKED — R3 check was against wrong summary)
+
+=== NEW: bobguard/reports/final-release-verdict-v2.json ===
+  Final release verdict: APPROVED (R1-R4 PASS, R5 NOT VERIFIED)
+
+REMOTE PUBLICATION: NOT PERFORMED
+  git not available on PATH. No commits, branches, PRs, or pushes made.
+  User has not authorized remote operations.

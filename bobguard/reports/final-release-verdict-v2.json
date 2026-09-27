@@ -1,0 +1,32 @@
+﻿{
+    "Verdict":  "APPROVED",
+    "Blocked":  false,
+    "Checks":  [
+                   {
+                       "Check":  "R1-unit-tests",
+                       "Status":  "PASS",
+                       "Detail":  "All unit tests passed"
+                   },
+                   {
+                       "Check":  "R2-regression-tests",
+                       "Status":  "PASS",
+                       "Detail":  "All regression tests passed"
+                   },
+                   {
+                       "Check":  "R3-sanitized-report",
+                       "Status":  "PASS",
+                       "Detail":  "Sanitized report has 0 redactions, 0 truncated blocks"
+                   },
+                   {
+                       "Check":  "R4-rollback-plan",
+                       "Status":  "PASS",
+                       "Detail":  "Rollback plan present and contains numbered steps"
+                   },
+                   {
+                       "Check":  "R5-dependency-audit",
+                       "Status":  "NOT VERIFIED",
+                       "Detail":  "No package manager or audit command available in this environment"
+                   }
+               ],
+    "Timestamp":  "2026-09-27T02:59:00.0569153-05:00"
+}

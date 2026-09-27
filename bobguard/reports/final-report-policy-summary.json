@@ -1,0 +1,13 @@
+﻿{
+    "InputPath":  ".\\bobguard\\reports\\final-report-raw.md",
+    "OutputPath":  ".\\bobguard\\reports\\final-report-sanitized.md",
+    "RedactedCount":  1,
+    "TruncatedBlocks":  0,
+    "RedactedItems":  [
+                          {
+                              "Type":  "Synthetic API key",
+                              "Preview":  "BOBGUARD-KEY-SYNTHETICTESTONLY..."
+                          }
+                      ],
+    "Timestamp":  "2026-09-27T02:58:09.7875296-05:00"
+}

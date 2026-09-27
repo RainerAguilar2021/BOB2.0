@@ -1,0 +1,121 @@
+﻿[
+    {
+        "Name":  "PagedItems: page 0 length",
+        "Status":  "PASS",
+        "Expected":  10,
+        "Actual":  10,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: page 0 first",
+        "Status":  "PASS",
+        "Expected":  1,
+        "Actual":  1,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: page 0 last",
+        "Status":  "PASS",
+        "Expected":  10,
+        "Actual":  10,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: page 2 length",
+        "Status":  "PASS",
+        "Expected":  5,
+        "Actual":  5,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: page 2 first",
+        "Status":  "PASS",
+        "Expected":  21,
+        "Actual":  21,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: page 2 last",
+        "Status":  "PASS",
+        "Expected":  25,
+        "Actual":  25,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: beyond end is empty",
+        "Status":  "PASS",
+        "Expected":  0,
+        "Actual":  0,
+        "Note":  ""
+    },
+    {
+        "Name":  "PagedItems: PageSize 0 throws",
+        "Status":  "PASS",
+        "Expected":  "exception",
+        "Actual":  "thrown: PageSize must be positive.",
+        "Note":  ""
+    },
+    {
+        "Name":  "Discount: 10% of 100",
+        "Status":  "PASS",
+        "Expected":  90,
+        "Actual":  90.0,
+        "Note":  ""
+    },
+    {
+        "Name":  "Discount: 0% of 50",
+        "Status":  "PASS",
+        "Expected":  50,
+        "Actual":  50,
+        "Note":  ""
+    },
+    {
+        "Name":  "Discount: 100% of 75",
+        "Status":  "PASS",
+        "Expected":  0,
+        "Actual":  0,
+        "Note":  ""
+    },
+    {
+        "Name":  "Discount: 33.33% of 99.99",
+        "Status":  "PASS",
+        "Expected":  66.66,
+        "Actual":  66.66,
+        "Note":  ""
+    },
+    {
+        "Name":  "Discount: negative pct throws",
+        "Status":  "PASS",
+        "Expected":  "exception",
+        "Actual":  "thrown: DiscountPct must be between 0 and 100.",
+        "Note":  ""
+    },
+    {
+        "Name":  "Discount: pct \u003e 100 throws",
+        "Status":  "PASS",
+        "Expected":  "exception",
+        "Actual":  "thrown: DiscountPct must be between 0 and 100.",
+        "Note":  ""
+    },
+    {
+        "Name":  "TotalPages: 20/10=2 (exact)",
+        "Status":  "PASS",
+        "Expected":  2,
+        "Actual":  2,
+        "Note":  ""
+    },
+    {
+        "Name":  "TotalPages: 0 items = 0 pages",
+        "Status":  "PASS",
+        "Expected":  0,
+        "Actual":  0,
+        "Note":  ""
+    },
+    {
+        "Name":  "TotalPages: PageSize 0 throws",
+        "Status":  "PASS",
+        "Expected":  "exception",
+        "Actual":  "thrown: PageSize must be positive.",
+        "Note":  ""
+    }
+]
