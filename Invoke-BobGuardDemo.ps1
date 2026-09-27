@@ -171,21 +171,21 @@ Log "   Run log saved to: $logFile"
 $allPass = ($p1 -eq 0) -and ($p2 -eq 1) -and ($p3 -eq 0) -and ($p4a -eq 0) -and ($p4b -eq 0) -and ($p5 -eq 0) -and ($p7 -eq 0)
 
 Write-Host "`n============================================================" -ForegroundColor Cyan
-Write-Host " BobGuard MVP - Resultado Final" -ForegroundColor Cyan
+Write-Host " BobGuard MVP - Final Results" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 $c = { param($ok) if ($ok) {"Green"} else {"Red"} }
-Write-Host (" Fase 1  - Pruebas unitarias con bug:       exit=$p1  (esperado 0)") -ForegroundColor (& $c ($p1 -eq 0))
-Write-Host (" Fase 2  - Prueba regresion con bug:        exit=$p2  (esperado 1)") -ForegroundColor (& $c ($p2 -eq 1))
-Write-Host (" Fase 3  - Fix aplicado:                    exit=$p3  (esperado 0)") -ForegroundColor (& $c ($p3 -eq 0))
-Write-Host (" Fase 4a - Regresion post-fix:              exit=$p4a (esperado 0)") -ForegroundColor (& $c ($p4a -eq 0))
-Write-Host (" Fase 4b - Suite completa post-fix:         exit=$p4b (esperado 0)") -ForegroundColor (& $c ($p4b -eq 0))
-Write-Host (" Fase 5  - Tests filtro de politica:        exit=$p5  (esperado 0)") -ForegroundColor (& $c ($p5 -eq 0))
-Write-Host (" Fase 6  - Filtro sobre informe raw:        exit=$p6  (0=limpio, 2=redactado)") -ForegroundColor (& $c ($p6 -in 0,2))
-Write-Host (" Fase 7  - Release readiness:               exit=$p7  (esperado 0=APPROVED)") -ForegroundColor (& $c ($p7 -eq 0))
+Write-Host (" Phase 1  - Unit tests with bug:             exit=$p1  (expected 0)") -ForegroundColor (& $c ($p1 -eq 0))
+Write-Host (" Phase 2  - Regression test with bug:        exit=$p2  (expected 1)") -ForegroundColor (& $c ($p2 -eq 1))
+Write-Host (" Phase 3  - Fix applied:                     exit=$p3  (expected 0)") -ForegroundColor (& $c ($p3 -eq 0))
+Write-Host (" Phase 4a - Regression after fix:            exit=$p4a (expected 0)") -ForegroundColor (& $c ($p4a -eq 0))
+Write-Host (" Phase 4b - Full suite after fix:            exit=$p4b (expected 0)") -ForegroundColor (& $c ($p4b -eq 0))
+Write-Host (" Phase 5  - Policy filter tests:             exit=$p5  (expected 0)") -ForegroundColor (& $c ($p5 -eq 0))
+Write-Host (" Phase 6  - Filter raw report:               exit=$p6  (0=clean, 2=redacted)") -ForegroundColor (& $c ($p6 -in 0,2))
+Write-Host (" Phase 7  - Release readiness:               exit=$p7  (expected 0=APPROVED)") -ForegroundColor (& $c ($p7 -eq 0))
 Write-Host ""
 if ($allPass) {
-    Write-Host " MVP VERIFICADO" -ForegroundColor Green
+    Write-Host " MVP VERIFIED" -ForegroundColor Green
 } else {
-    Write-Host " MVP BLOQUEADO - revisar fases con error" -ForegroundColor Red
+    Write-Host " MVP BLOCKED - review phases with errors" -ForegroundColor Red
 }
 Write-Host "============================================================" -ForegroundColor Cyan

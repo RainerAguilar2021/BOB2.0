@@ -9,7 +9,7 @@
       R2  Regression tests pass
       R3  Sanitized report exists and has 0 redactions
       R4  Rollback plan present in incident file
-      R5  Dependency audit - NOT VERIFIED (no package manager available)
+      R5  Dependency audit - NOT VERIFIED (result is not consumed by this checker)
       R6  Self-check: this tool's own exit
 
     Missing, malformed, or unavailable evidence is BLOCKED or NOT VERIFIED.
@@ -71,20 +71,26 @@ if (-not (Test-Path $TestResultsPath)) {
 } else {
     try {
         $testResults = Get-Content $TestResultsPath -Raw | ConvertFrom-Json
-        [object[]]$unitFails = @($testResults | Where-Object {
-            $_.Status -eq "FAIL" -and $_.Name -notmatch "INC-001 regression"
+        [object[]]$unitTests = @($testResults | Where-Object {
+            $_.Name -notmatch " regression:"
         })
-        [object[]]$regrFails = @($testResults | Where-Object {
-            $_.Status -eq "FAIL" -and $_.Name -match "INC-001 regression"
+        [object[]]$regressionTests = @($testResults | Where-Object {
+            $_.Name -match " regression:"
         })
+        [object[]]$unitFails = @($unitTests | Where-Object { $_.Status -eq "FAIL" })
+        [object[]]$regrFails = @($regressionTests | Where-Object { $_.Status -eq "FAIL" })
 
-        if ($unitFails.Count -eq 0) {
+        if ($unitTests.Count -ne 17) {
+            Add-Check "R1-unit-tests" "BLOCKED" "Expected 17 unit test results; found $($unitTests.Count)"
+        } elseif ($unitFails.Count -eq 0) {
             Add-Check "R1-unit-tests" "PASS" "All unit tests passed"
         } else {
             Add-Check "R1-unit-tests" "BLOCKED" "$($unitFails.Count) unit test(s) failed"
         }
 
-        if ($regrFails.Count -eq 0) {
+        if ($regressionTests.Count -ne 8) {
+            Add-Check "R2-regression-tests" "BLOCKED" "Expected 8 regression test results; found $($regressionTests.Count)"
+        } elseif ($regrFails.Count -eq 0) {
             Add-Check "R2-regression-tests" "PASS" "All regression tests passed"
         } else {
             Add-Check "R2-regression-tests" "BLOCKED" "$($regrFails.Count) regression test(s) failed: $($regrFails[0].Note)"
@@ -126,7 +132,7 @@ if (-not (Test-Path $IncidentPath)) {
 }
 
 # R5: Dependency audit
-Add-Check "R5-dependency-audit" "NOT VERIFIED" "No package manager or audit command available in this environment"
+Add-Check "R5-dependency-audit" "NOT VERIFIED" "Dependency audit is not consumed by this checker; see docs/dependency-audit.md"
 
 # Summary
 $verdict = if ($blocked) { "BLOCKED" } else { "APPROVED" }

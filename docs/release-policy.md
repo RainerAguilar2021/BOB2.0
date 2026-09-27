@@ -8,13 +8,19 @@ A release is **APPROVED** only when ALL of the following conditions are met.
 Any condition that cannot be evaluated must be reported as **BLOCKED** or
 **NOT VERIFIED** — never silently treated as passing.
 
+Run `.\tests\Invoke-Tests.ps1 -Suite All` before the release check so the
+results file contains the complete set of unit and regression results. The
+checker blocks missing test evidence. INC-002 is intentionally unresolved in
+this demo; its two midpoint regression cases currently fail, so a release
+verdict must remain **BLOCKED**.
+
 | # | Condition | Check method |
 |---|---|---|
-| R1 | All unit tests pass | `.\tests\Invoke-Tests.ps1 -Suite Unit` exits 0 |
-| R2 | All regression tests pass | `.\tests\Invoke-Tests.ps1 -Suite Regression` exits 0 |
+| R1 | All 17 unit tests pass | `test-results.json` contains all 17 unit results and no failures |
+| R2 | All 8 regression tests pass | `test-results.json` contains all 8 regression results and no failures |
 | R3 | Final sanitized report contains no unredacted synthetic-secret patterns | `Invoke-PolicyFilter.ps1` exits 0 or 2 (not an operational error); redaction count must be 0 on the final report |
 | R4 | Rollback plan present and project-specific | `incidents/INC-001/incident.md` contains "Rollback Plan" section with step-by-step instructions |
-| R5 | Dependency audit: no critical/high findings | **NOT VERIFIED** — no package manager or audit command available in this environment |
+| R5 | Dependency audit: no critical/high findings | Run the checks in [`dependency-audit.md`](dependency-audit.md); the PowerShell release checker does not consume their results and reports **NOT VERIFIED** |
 | R6 | Release-readiness tool produces a non-BLOCKED verdict | `Invoke-ReleaseCheck.ps1` exits 0 |
 
 ## Secret Patterns Covered by Policy Filter

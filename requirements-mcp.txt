@@ -1,0 +1,2 @@
+# Optional dependency for bobguard_mcp_server.py (stdio MCP server)
+mcp==2.2.0
